@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Centering</title>
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.box {
+  width: 50px;
+  height: 50px;
+}
+
+.bigbox {
+  width: 200px;
+  height: 200px;
+}
+
+.blue { background: lightblue; }
+.yellow { background: yellow; }
+</style>
+</head>
+
+<body>
+  <h2>inline + text-align</h2>
+  <p>text-align was designed for text but it wworks on any inline-block or inline.</p>
+  <div style="text-align: center;" class="yellow">
+    <div style="display: inline-block;" class="box blue"></div>
+  </div>
+
+  <h2>Auto margin</h2>
+  <p>Requires a set width otherwise there won't be spare room. (auto margin doesn't force things)</p>
+  <div class="yellow">
+    <div style="margin: 0 auto;" class="box blue"></div>
+  </div>
+
+  <p>You can also center both ways, it requires the parent to be flex though. see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container#using_auto_margins_for_main_axis_alignment">here</a>.</p>
+  <div style="display: flex;" class="bigbox yellow">
+    <div style="margin: auto;" class="box blue"></div>
+  </div>
+
+  <p>
+  <b>Warning</b>: auto margin doesn't work on inline or inline-block elements unless the parent is flex. see <a href="https://stackoverflow.com/a/24313727">this</a> and related for why.
+  </p>
+
+  <div class="yellow">
+    <div style="display: inline-block; margin: 0 auto;" class="box blue"></div>
+  </div>
+  <div style="margin-top: 8px;" class="yellow">
+    <span style="margin: 0 auto;">Inline</span>
+  </div>
+  <p>But they both work with flex</p>
+
+  <h2>flex</h2>
+  <p>Works well when you want to align all children</p>
+  <div style="display: flex; justify-content: center;" class="yellow">
+    <div class="box blue"></div>
+  </div>
+  <p>If you want to align a specific child along the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligning_Items_in_a_Flex_Container">cross-axis</a> you can use align-self</p>
+  <div style="display: flex; flex-direction: column;" class="yellow">
+    <div style="align-self: center;" class="box blue"></div>
+  </div>
+  <p>Note that justify-self <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_in_Flexbox#there_is_no_justify-self_in_flexbox">isn't in flexbox</a>, use <a href="https://stackoverflow.com/a/33856609">auto margins</a> instead for aligning along the main-axis.</p>
+  <div style="display: flex;" class="bigbox yellow">
+    <div style="align-self: center; margin: 0 auto;" class="box blue"></div>
+  </div>
+</body>
+
+</html>
